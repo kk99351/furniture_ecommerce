@@ -1,9 +1,11 @@
-import react from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
-export default function CartScreen(props){
-    const {productId} = useParams;
-    const qty = props.location.search? Number(props.location.search.split('=')[1]): 1;
+export default function CartScreen(){
+    const params = useParams();
+    const { id: productId } = params;
+    const {search} = useLocation();
+    const qtyInUrl = new URLSearchParams(search).get("qty");
+    const qty = qtyInUrl ? Number(qtyInUrl) : 1;
     return (
         <div>
             <h1>Cart Screen</h1>

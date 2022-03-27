@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Rating from '../components/Rating';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { detailsProduct } from '../actions/productActions';
 
 
-export default function ProductScreen(props) {
+export default function ProductScreen() {
     const dispatch = useDispatch();
     const params = useParams();
+    const navigate = useNavigate();
     const { id: productId } = params;
     const [qty, setQty] = useState(1);
     const productDetails = useSelector((state) => state.productDetails);
@@ -19,7 +20,7 @@ export default function ProductScreen(props) {
         dispatch(detailsProduct(productId));
     }, [dispatch, productId]);
     const addToCartHandler = () =>{
-        props.history.push(`/cart/${productId}?qty ={qty}`);
+        navigate(`/cart/${productId}?qty=${qty}`);
     };
     return (
         <div>
@@ -75,9 +76,9 @@ export default function ProductScreen(props) {
                                         <div className='row'>
                                             <div>Qty</div>
                                             <div>
-                                                <select value={qty} onchange={e => setQty(e.target.value)}>
+                                                <select value={qty} onChange={e => setQty(e.target.value)}>
                                                     {
-                                                        [...Array(product.countInStock).keys()].map( x => (
+                                                        [...Array(product.countInStock).keys()].map( (x) => (
                                                             <option key={x+1} value={x+1}>{x+1}</option>
                                                         ))
                                                     }
