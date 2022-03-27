@@ -26,8 +26,8 @@ export default function CartScreen() {
         navigate('/signin?redirect=shipping');
     };
     return (
-        <div className='row top'>
-            <div className='col-2'>
+        <div className="row top">
+            <div className="col-2">
                 <h1>Shopping Cart</h1>
                 {cartItems.length === 0 ? <MessageBox>
                     Cart is empty. <Link to="/">Go Shopping</Link>
@@ -42,7 +42,6 @@ export default function CartScreen() {
                                             <img src={item.image} alt={item.name} className="small"
                                             ></img>
                                         </div>
-                                    </div>
                                     <div className='min-30'>
                                         <Link to={`/product/${item.product}`}>{item.name}</Link>
                                     </div>
@@ -62,6 +61,7 @@ export default function CartScreen() {
                                         <button type="button" onClick={() => removeFromCartHandler(item.product)}>
                                             Delete
                                         </button>
+                                    </div>
                                     </div>
                                 </li>
                             ))}
