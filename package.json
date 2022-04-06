@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.3",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.2.10"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.14.0",
