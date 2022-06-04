@@ -5,6 +5,7 @@ import { signout } from './actions/userActions';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import RegisterScreen from './screens/RegisterScreen';
 import SigninScreen from './screens/SigninScreen';
 function App() {
   const cart = useSelector(state => state.cart);
@@ -14,7 +15,7 @@ function App() {
   const dispatch = useDispatch();
   const signoutHandler = () =>{
     dispatch(signout());
-  }
+  };
 
   return (
     <Router>
@@ -34,7 +35,7 @@ function App() {
             <div className='dropdown'>
               <Link to='#'>{userInfo.name} <i className='fa fa-caret-down'></i></Link>
               <ul className='dropdown-content'>
-                <Link to='signout' onClick={signoutHandler}>
+                <Link to='#signout' onClick={signoutHandler}>
                   Sign Out
                 </Link>
               </ul>
@@ -51,6 +52,7 @@ function App() {
           <Route path="/cart/:id" element={<CartScreen />}></Route>
           <Route path="/cart/" element={<CartScreen />}></Route>
           <Route path="/signin" element = {<SigninScreen />}></Route>
+          <Route path="/register" element={<RegisterScreen />}></Route>
           <Route path="/product/:id" element = {<ProductScreen />}></Route>
           <Route path="/" element={<HomeScreen />}></Route>
         </Routes>
