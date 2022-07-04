@@ -4,16 +4,16 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import MessageBox from '../components/MessageBox';
 
-export default function CartScreen() {
+export default function CartScreen(props) {
+    const navigate = useNavigate();
     const params = useParams();
     const { id: productId } = params;
     const { search } = useLocation();
     const qtyInUrl = new URLSearchParams(search).get("qty");
     const qty = qtyInUrl ? Number(qtyInUrl) : 1;
-    const cart = useSelector(state => state.cart);
+    const cart = useSelector((state) => state.cart);
     const { cartItems } = cart
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     useEffect(() => {
         if (productId) {
             dispatch(addToCart(productId, qty));
