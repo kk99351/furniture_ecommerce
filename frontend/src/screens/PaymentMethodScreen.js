@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { savePaymentMethod } from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
 
-export default function PaymentMethodScreen(props){
+export default function PaymentMethodScreen(){
     const navigate = useNavigate();
     const cart = useSelector((state) => state.cart);
     const {shippingAddress}=cart;
